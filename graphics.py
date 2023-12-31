@@ -1,29 +1,35 @@
 from tkinter import Tk, BOTH, Canvas
 
+# Class for our actual application window
 class Window:
     def __init__(self, width, height):
-        self.__root = Tk()
-        self.__root.title('Maze Solver')
-        self.__canvas = Canvas(self.__root, bg = 'white', width=width, height=height)
-        self.__canvas.pack(fill=BOTH, expand=1)
-        self.__running = False
-        self.__root.protocol("WM_DELETE_WINDOW", self.close)
+        # Root is the window
+        self._root = Tk()
+        self._root.title('Maze Solver')
+        # Canvas is what we display in the window
+        self._canvas = Canvas(self._root, bg = 'white', width=width, height=height)
+        # Pack the canvas inside our window
+        self._canvas.pack(fill=BOTH, expand=1)
+        self._running = False
+        # Close the window when we press the close button on the window
+        self._root.protocol("WM_DELETE_WINDOW", self.close)
 
     def redraw(self):
-        self.__root.update_idletasks()
-        self.__root.update()
+        # Update the window while the program is running
+        self._root.update_idletasks()
+        self._root.update()
 
     def wait_for_close(self):
-        self.__running = True
-        while self.__running:
+        self._running = True
+        while self._running:
             self.redraw()
         print("window closed...")
         
     def close(self):
-        self.__running = False
+        self._running = False
 
-    def drawLine(self, line, fillColour="mediumpurple"):
-        line.draw(self.__canvas, fillColour)
+    def draw_line(self, line, fill_colour="mediumpurple"):
+        line.draw(self._canvas, fill_colour)
 
 class Point:
     def __init__(self, x, y):
@@ -38,8 +44,8 @@ class Line:
         self.y2 = p2.y
         self.width = width
 
-    def draw(self, canvas, fillColour):
+    def draw(self, canvas, fill_colour):
         canvas.create_line(self.x1, self.y1, 
                            self.x2, self.y2, 
-                           fill=fillColour, width=self.width)
+                           fill=fill_colour, width=self.width)
         canvas.pack(fill=BOTH, expand=1)
