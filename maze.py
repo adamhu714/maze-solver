@@ -15,6 +15,7 @@ class Maze:
         self._win = win
 
         self._create_cells()
+        self._break_entrance_and_exit()
 
     def _create_cells(self):
         self._cells = [[Cell(self._win) for j in range(self._num_rows)] for i in range(self._num_cols)]
