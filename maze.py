@@ -1,8 +1,8 @@
 from cell import Cell
 import time
 
-class maze:
-    
+class Maze:
+
     def __init__(self, x1, y1, num_rows, num_cols,
                     cell_size_x, cell_size_y, win,):
         
@@ -17,9 +17,9 @@ class maze:
         self._create_cells()
 
     def _create_cells(self):
-        self._cells = [[[Cell(self._win)] for j in range(self._num_rows)] for i in range(self._num_cols)]
-        for i in self._num_cols:
-            for j in self._num_rows:
+        self._cells = [[Cell(self._win) for j in range(self._num_rows)] for i in range(self._num_cols)]
+        for i in range(self._num_cols):
+            for j in range(self._num_rows):
                 self._draw_cell(i, j)
 
     def _draw_cell(self, i, j):
