@@ -43,14 +43,14 @@ class Cell:
         to_x_mid = (to_cell._x1 + to_cell._x2) / 2
         to_y_mid = (to_cell._y1 + to_cell._y2) / 2
 
-        fill_color = "red"
+        fill_colour = "red"
         if undo:
-            fill_color = "gray"
+            fill_colour = "gray"
         
         line = Line(Point(x_mid, y_mid), Point(to_x_mid,to_y_mid))
-        self._win.draw_line(line, fill_color)
+        self._win.draw_line(line, fill_colour)
 
-        # # moving left
+                # # moving left
         # if self._x1 > to_cell._x1:
         #     line = Line(Point(self._x1, y_mid), Point(x_mid, y_mid))
         #     self._win.draw_line(line, fill_color)
